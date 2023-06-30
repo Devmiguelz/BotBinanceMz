@@ -1,9 +1,11 @@
 import time
 from binance.client import Client
+from config import API_KEY, API_SECRET
 
 # Configuración de la API de Binance
-api_key = 'tu_api_key'
-api_secret = 'tu_api_secret'
+api_key = API_KEY
+api_secret = API_SECRET
+par = 'BTCBUSD'
 client = Client(api_key, api_secret)
 
 # Configuración del grid bot
@@ -28,7 +30,7 @@ def realizar_venta(par, cantidad, precio):
 # Loop principal del grid bot
 while True:
     # Obtener el precio actual del par de trading
-    precio_actual = obtener_precio('BTCUSDT')
+    precio_actual = obtener_precio(par)
 
     # Calcular el precio de la cuadrícula superior e inferior
     precio_superior = precio_actual * (1 + spread)
